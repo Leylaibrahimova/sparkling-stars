@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+    
+    <style>
+        
+body {
+    background-color: #2e3537;
+}
+
+.star {
+    position: fixed;
+    pointer-events: none;
+}
+
+.star:before,
+.star:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '\2726';
+    font-size: 9px;
+}
+
+.star:before {
+    color: transparent;
+    text-shadow: 0 0 3px rgb(250, 174, 190);
+}
+
+.star:after {
+    background: rgb(255, 188, 210);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+</style>
+
+<script>
+window.addEventListener('mousemove', function(e) {
+    var arr = [1, 0.9, 0.8, 0.5, 0.2];
+    arr.forEach(function(i) {
+        var x = 75;
+        var star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.round(Math.random() * (window.innerHeight - 1)) + 'px';
+        star.style.left = Math.round(Math.random() * (window.innerWidth - 1)) + 'px';
+        document.body.appendChild(star);
+        window.setTimeout(function() {
+            document.body.removeChild(star);
+        }, Math.round(Math.random() * 1600));
+    });
+}, false);
+</script>
+</body>
+</html>
